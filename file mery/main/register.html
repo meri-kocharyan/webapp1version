@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login / register</title>
+    <style>
+        /* AO3-inspired minimal reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #ffffff;
+            color: #000000;
+            font-family: Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 500px;  /* narrower because only one form */
+            width: 100%;
+        }
+        h1 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 2rem;
+            font-weight: normal;
+            text-align: center;
+            margin-bottom: 2rem;
+            letter-spacing: -0.01em;
+        }
+        .toggle-row {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .toggle-btn {
+            background: none;
+            border: none;
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 1.2rem;
+            padding: 0.3rem 0.8rem;
+            cursor: pointer;
+            color: #666;
+            border-bottom: 2px solid transparent;
+            transition: 0.1s;
+        }
+        .toggle-btn.active {
+            color: #000;
+            border-bottom-color: #000;
+        }
+        .form-box {
+            border: 1px solid #ccc;
+            padding: 1.5rem;
+            background: #fff;
+        }
+        .form-box h2 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.5rem;
+            font-weight: normal;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.3rem;
+        }
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 0.2rem;
+            color: #333;
+        }
+        input {
+            width: 100%;
+            padding: 0.4rem 0.5rem;
+            border: 1px solid #aaa;
+            border-radius: 0;
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 1rem;
+            background: #fff;
+        }
+        input:focus {
+            outline: none;
+            border-color: #000;
+        }
+        button[type="submit"] {
+            background: #fff;
+            color: #000;
+            border: 1px solid #000;
+            padding: 0.5rem 1rem;
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.1s;
+        }
+        button[type="submit"]:hover {
+            background: #000;
+            color: #fff;
+        }
+        .note {
+            margin-top: 2.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #666;
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+        }
+        .note code {
+            background: #f5f5f5;
+            padding: 0.2rem 0.4rem;
+            border: 1px solid #ddd;
+        }
+        /* hide inactive form */
+        .form-hidden {
+            display: none;
+        }
+    </style>
+
+    <script type="module" src="register.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>login page</h1>
+
+        <!-- toggle buttons -->
+        <div class="toggle-row">
+            <button class="toggle-btn active" id="btn-login">Log In</button>
+            <button class="toggle-btn" id="btn-register">Register</button>
+        </div>
+
+        <!-- login form (visible by default) -->
+        <div id="form-login" class="form-box">
+            <h2>Log in</h2>
+            <form>
+                <div class="form-group">
+                    <label for="email-login">Email</label>
+                    <input type="email" id="email-login" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password-login">Password</label>
+                    <input type="password" id="password-login" name="password" required>
+                </div>
+                <button type="submit">Log In</button>
+            </form>
+        </div>
+
+        <!-- register form (hidden by default) -->
+        <div id="form-register" class="form-box form-hidden">
+            <h2>Register</h2>
+            <form>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button id="submit" type="submit">Register</button>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- toggle between login and register-->
+    <script>
+        (function() {
+            const btnLogin = document.getElementById('btn-login');
+            const btnRegister = document.getElementById('btn-register');
+            const formLogin = document.getElementById('form-login');
+            const formRegister = document.getElementById('form-register');
+
+            function setActiveForm(formType) {
+                // update button active states
+                if (formType === 'login') {
+                    btnLogin.classList.add('active');
+                    btnRegister.classList.remove('active');
+                    formLogin.classList.remove('form-hidden');
+                    formRegister.classList.add('form-hidden');
+                } else {
+                    btnRegister.classList.add('active');
+                    btnLogin.classList.remove('active');
+                    formRegister.classList.remove('form-hidden');
+                    formLogin.classList.add('form-hidden');
+                }
+            }
+
+            btnLogin.addEventListener('click', function(e) {
+                e.preventDefault();
+                setActiveForm('login');
+            });
+
+            btnRegister.addEventListener('click', function(e) {
+                e.preventDefault();
+                setActiveForm('register');
+            });
+        })();
+    </script>
+
+</body>
+</html>

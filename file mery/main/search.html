@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="language" content="en-US" />
+    <meta name="description" content="Enudris, a web archive for works." />
+    <meta name="distribution" content="GLOBAL" />
+    <meta name="author" content="Vanitas Rosenberg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="chrome" content="nointentdetection" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:title" content="Enudris" />
+    <meta property="og:description" content="A web archive." />
+    <meta property="og:url" content="https://enudris.com" />
+    <meta property="og:type" content="website" />
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="icon" href="favicon-32x32.png" type="image/x-icon">
+    <title>Search | Enudris</title>
+
+
+    <style>
+        
+    </style>
+</head>
+<body class="logged-out javascript" style="zoom: 1;">
+
+<div id="outer" class="wrapper">
+    <div class="header-top">
+        <header id="header" class="region">
+            <h1 class="heading">
+                <a href="index.html" style="text-decoration: none; font-family: 'Courier New', cursive; color: #333; font-size: 48px;"> Enudris </a>
+            </h1>
+
+            <div id="search" class="search">
+                <form action="/search" method="get">
+                    <input type="text" name="query" placeholder="Search works..." class="text" />
+                    <button type="submit" class="button">Search</button>
+                </form>
+            </div>
+
+            <div id="login" class="dropdown">
+                <p class="user actions">
+                    <a id="login-dropdown">Log In</a>
+                </p>
+                <div id="mini_login" class="simple login menu">
+                    <form class="new_user" id="new_user_session_small" action="" accept-charset="UTF-8" method="post">
+                        <input type="hidden" name="authenticity_token" value="CfSFXWEYmUBVPI1-VuIFk9ug5C0zDti7025TMy3ITAoXsL-KpelHo97n4I70C5n68GycvXgeDnZB5oNCmGu0LQ" autocomplete="off" />
+                        <dl>
+                            <dt><label for="user_session_mini_login">Username or email:</label></dt>
+                            <dd><input autocomplete="on" id="user_session_mini_login" type="text" name="user[login]" /></dd>
+                            <dt><label for="user_session_mini_password">Password:</label></dt>
+                            <dd><input id="user_session_mini_password" type="password" name="user[password]" /></dd>
+                        </dl>
+                        <p class="submit actions">
+                            <input type="submit" name="commit" value="Log In" />
+                        </p>
+                    </form>
+                    <ul class="footnote actions">
+                        <li><a href="">Forgot password?</a></li>
+                        <li><a href="register.html">Register</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="logged-in" style="display: none;">
+                <p class="user actions">
+                    <a href="#" id="logout-link">Log Out</a>
+                </p>
+            </div>
+        </header>
+    </div>
+
+    <div class="headerboard">
+        <nav>
+            <ul class="left-nav">
+                <li><a href="search.html">Search</a></li>
+                <li><a href="/fandoms">Fandoms</a></li>
+                <li><a href="welcome.html">About</a></li>
+            </ul>
+            <ul class="right-nav">
+                <li><a href="/post">Post</a></li>
+                <li><a href="/inbox">Inbox</a></li>
+                <li><a href="/chat">Chat</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- ========== SEARCH PAGE CONTENT ========== -->
+    <main class="search-page">
+        <div class="search-container">
+            <!-- Left sidebar with buttons – no grey background -->
+            <div class="search-sidebar">
+                <button class="side-button active" data-panel="book">Book Search</button>
+                <button class="side-button" data-panel="bookmark">Bookmark Search</button>
+                <button class="side-button" data-panel="tag">Tag Search</button>
+            </div>
+
+            <!-- Right panels -->
+            <div class="search-panels">
+                <!-- Book Search Panel -->
+                <div id="panel-book" class="search-panel active">
+                    <h2>Book Search</h2>
+                    <form>
+                        <!-- Basic text fields -->
+                        <div class="form-group">
+                        <label for="book-title">Title:</label>
+                        <input type="text" id="book-title" name="title">
+                        </div>
+
+                        <div class="form-group">
+                        <label for="book-creator">Creator:</label>
+                        <input type="text" id="book-creator" name="creator">
+                        </div>
+
+                        <div class="form-group">
+                        <label for="book-fandom">Fandom:</label>
+                        <input type="text" id="book-fandom" name="fandom">
+                        </div>
+
+                        <!-- Completion Status (radio, only one) -->
+                        <fieldset class="form-group">
+                        <legend>Completion Status:</legend>
+                        <label><input type="radio" name="completion" value="all" checked> All Works</label>
+                        <label><input type="radio" name="completion" value="completed"> Completed</label>
+                        <label><input type="radio" name="completion" value="wip"> Works in Progress</label>
+                        </fieldset>
+
+                        <!-- Rating (checkboxes, multiple) -->
+                        <fieldset class="form-group">
+                        <legend>Rating:</legend>
+                        <label><input type="checkbox" name="rating" value="gen"> Gen</label>
+                        <label><input type="checkbox" name="rating" value="teen"> Teen</label>
+                        <label><input type="checkbox" name="rating" value="mature"> Mature</label>
+                        <label><input type="checkbox" name="rating" value="explicit"> Explicit</label>
+                        </fieldset>
+
+                        <!-- Warnings (checkboxes, multiple) -->
+                        <fieldset class="form-group">
+                        <legend>Warnings:</legend>
+                        <label><input type="checkbox" name="warning" value="graphic"> Graphic Descriptions of violence and gore</label>
+                        <label><input type="checkbox" name="warning" value="major-death"> Major Character Death</label>
+                        <label><input type="checkbox" name="warning" value="rape"> Rape or SA</label>
+                        <label><input type="checkbox" name="warning" value="underage"> Underage</label>
+                        <label><input type="checkbox" name="warning" value="violent-language"> Violent Language</label>
+                        <label><input type="checkbox" name="warning" value="choose-not"> Creator chose not to include any warnings</label>
+                        </fieldset>
+
+                        <!-- Relationships (checkboxes, multiple) -->
+                        <fieldset class="form-group">
+                        <legend>Relationships:</legend>
+                        <label><input type="checkbox" name="relationship" value="f-f"> F/F</label>
+                        <label><input type="checkbox" name="relationship" value="m-m"> M/M</label>
+                        <label><input type="checkbox" name="relationship" value="f-m"> F/M</label>
+                        <label><input type="checkbox" name="relationship" value="gen"> Gen</label>
+                        <label><input type="checkbox" name="relationship" value="other"> Other</label>
+                        </fieldset>
+
+                        <!-- Crossovers (radio, only one) -->
+                        <fieldset class="form-group">
+                        <legend>Crossovers:</legend>
+                        <label><input type="radio" name="crossover" value="all" checked> All Works</label>
+                        <label><input type="radio" name="crossover" value="exclude"> Exclude Crossovers</label>
+                        <label><input type="radio" name="crossover" value="only"> Only Crossovers</label>
+                        </fieldset>
+
+                        <!-- Chapters (text with hint) -->
+                        <div class="form-group">
+                        <label for="book-chapters">Chapters:</label>
+                        <input type="text" id="book-chapters" name="chapters">
+                        <span class="hint">Enter a number, >number, <number, or range (min-max) </span>
+                        </div>
+
+                        <!-- Word Count -->
+                        <div class="form-group">
+                        <label for="book-wordcount">Word Count:</label>
+                        <input type="text" id="book-wordcount" name="wordcount">
+                        </div>
+
+                        <!-- Likes -->
+                        <div class="form-group">
+                        <label for="book-likes">Likes:</label>
+                        <input type="text" id="book-likes" name="likes">
+                        </div>
+
+                        <!-- Comments -->
+                        <div class="form-group">
+                        <label for="book-comments">Comments:</label>
+                        <input type="text" id="book-comments" name="comments">
+                        </div>
+
+                        <!-- Bookmarks -->
+                        <div class="form-group">
+                        <label for="book-bookmarks">Bookmarks:</label>
+                        <input type="text" id="book-bookmarks" name="bookmarks">
+                        </div>
+
+                        <!-- Language (dropdown) -->
+                        <div class="form-group">
+                        <label for="book-language">Language:</label>
+                        <select id="book-language" name="language">
+                            <option value="">Any</option>
+                            <option value="en">English</option>
+                            <option value="fr">French</option>
+                            <option value="es">Spanish</option>
+                            <option value="de">German</option>
+                        </select>
+                        </div>
+
+                        <!-- Sort by (dropdown, single selection) -->
+                        <div class="form-group">
+                        <label for="book-sortby">Sort by:</label>
+                        <select id="book-sortby" name="sortby">
+                            <option value="date-posted">Best Match</option>
+                            <option value="creator">Creator</option>
+                            <option value="title">Title</option>
+                            <option value="wordcount">Word Count</option>
+                            <option value="chapters">Chapter Count</option>
+                            <option value="likes">Likes</option>
+                            <option value="comments">Comments</option>
+                            <option value="bookmarks">Bookmarks</option>
+                            <option value="libraries">Libraries</option>
+                            <option value="date-posted">Date Posted</option>
+                            <option value="date-updated">Date Updated</option>
+                        </select>
+                        </div>
+
+                        <!-- Sort direction (radio, only one) -->
+                        <fieldset class="form-group">
+                        <legend>Sort direction:</legend>
+                        <label><input type="radio" name="direction" value="asc" checked> Ascending</label>
+                        <label><input type="radio" name="direction" value="desc"> Descending</label>
+                        </fieldset>
+
+                        <button type="submit">Search Books</button>
+                    </form>
+                </div>
+
+                <!-- Bookmark Search Panel -->
+                <div id="panel-bookmark" class="search-panel">
+                    <h2>Bookmark Search</h2>
+                    <form>
+                        <label for="bookmark-url">URL:</label>
+                        <input type="text" id="bookmark-url" placeholder="e.g., example.com">
+
+                        <label for="bookmark-tags">Tags (comma separated):</label>
+                        <input type="text" id="bookmark-tags" placeholder="e.g., reference, tutorial">
+
+                        <label for="bookmark-date">Date added:</label>
+                        <input type="date" id="bookmark-date">
+
+                        <button type="submit">Search Bookmarks</button>
+                    </form>
+                </div>
+
+                <!-- Tag Search Panel -->
+                <div id="panel-tag" class="search-panel">
+                    <h2>Tag Search</h2>
+                    <form>
+                        <label for="tag-name">Tag name:</label>
+                        <input type="text" id="tag-name" placeholder="e.g., fantasy">
+
+                        <label for="tag-category">Category:</label>
+                        <select id="tag-category">
+                            <option value="">Any</option>
+                            <option value="genre">Genre</option>
+                            <option value="character">Character</option>
+                            <option value="relationship">Relationship</option>
+                        </select>
+
+                        <label for="tag-sort">Sort by:</label>
+                        <select id="tag-sort">
+                            <option value="name">Name</option>
+                            <option value="popularity">Popularity</option>
+                        </select>
+
+                        <button type="submit">Search Tags</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- ========== END SEARCH PAGE CONTENT ========== -->
+
+</div> <!-- closes #outer -->
+
+<div class="footer">
+    <p>TEST FOOTER</p>
+</div>
+</div> <!-- extra stray closing div – keep as in original -->
+
+<!-- JavaScript for button switching -->
+<script>
+    (function() {
+        const buttons = document.querySelectorAll('.side-button');
+        const panels = document.querySelectorAll('.search-panel');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                buttons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+
+                panels.forEach(p => p.classList.remove('active'));
+
+                const panelId = 'panel-' + this.dataset.panel;
+                document.getElementById(panelId).classList.add('active');
+            });
+        });
+    })();
+</script>
+
+<script src="js/dropdown.js"></script>
+<script src="js/login-sim.js"></script>
+
+</body>
+</html>

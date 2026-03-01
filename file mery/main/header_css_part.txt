@@ -1,0 +1,311 @@
+/* search */
+
+#header .search {
+  float: right;
+  color: #2a2a2a;
+  margin-right: 0.25em;
+}
+
+#header #search input:focus {
+  color: #2a2a2a;
+  outline: 1px dotted;
+}
+
+#header #search .text, #header #search .button {
+  border: none;
+}
+
+#header #search .text {
+  margin: 0.2857em 0.429em;
+}
+
+#header #search .button {
+  margin: 0;
+}
+
+.submit input[type="submit"] {
+  font-size: 1em;
+  padding: 2px 5px;        /* Larger button */
+  margin: 15px 0 10px;       /* Top, right/left, bottom */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* === FLEX LAYOUT FOR HEADER === */
+#header {
+  display: flex;
+  align-items: flex-end;        /* keeps all children aligned at bottom */
+  padding: 0.5em 1em;
+}
+
+/* Push everything after the heading to the right */
+#header .heading {
+  margin-right: auto;
+}
+
+/* Search container adjustments */
+#header .search {
+  float: none;                  /* remove old float */
+  margin-right: 5em;          /* space between search and login */
+  display: flex;
+}
+
+/* Search form as flex row */
+#header #search form {
+  display: flex;
+  margin: 0;
+  align-content: flex-end;
+}
+
+/* Input field */
+#header #search .text {
+  margin: 0;                    /* override old margin */
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px 0 0 3px;
+  height: auto;
+  font-size: 1.2em;
+  width: 420px;                 /* adjust width as needed */
+}
+
+/* Search button */
+#header #search .button {
+  margin: 0;
+  padding: 4px 12px;
+  background-color:  rgb(140, 169, 196);    /* your dark blue */
+  color: white;
+  border: 1px solid  rgb(140, 169, 196);
+  border-radius: 0 3px 3px 0;
+  cursor: pointer;
+  font-size: 1.2em;
+  white-space: nowrap;
+}
+
+#header #search .button:hover {
+  background-color:  rgb(78, 145, 208);    /* slightly lighter on hover */
+}
+
+
+
+
+
+
+
+/* Headerboard styles */
+.headerboard {
+  width: 100%;
+  background-color: rgba(140, 169, 196, 0.79);   
+  padding: 0.5em 1em;
+  box-sizing: border-box;
+}
+
+.headerboard nav {
+  display: flex;
+  gap: 2em;
+  flex-wrap: wrap;
+}
+
+/* Headerboard links */
+.headerboard nav a {
+  color: #1c1d6b;              /* same as your login link color */
+  text-decoration: none;
+  font-weight: normal;         /* removes bold */
+  font-size: 1.1em;
+  padding: 0.2em 0.5em;
+}
+
+/* Only underline on hover – no background change */
+.headerboard nav a:hover {
+  text-decoration: underline;
+  background-color: transparent;  /* ensures no background appears */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Navigation flex container */
+.headerboard nav {
+  display: flex;
+  justify-content: space-between;  /* pushes left and right groups apart */
+  align-items: center;
+  flex-wrap: wrap;                 /* allows wrapping on small screens */
+}
+
+/* Left and right groups */
+.headerboard .nav-left,
+.headerboard .nav-right {
+  display: flex;
+  gap: 2em;                        /* space between links in each group */
+  flex-wrap: wrap;
+}
+
+/* Link styles (unchanged) */
+.headerboard nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1em;
+  padding: 0.2em 0.5em;
+}
+
+/* Optional: adjust right group alignment on very small screens */
+@media (max-width: 600px) {
+  .headerboard nav {
+    flex-direction: column;
+    gap: 0.5em;
+  }
+  .headerboard .nav-left,
+  .headerboard .nav-right {
+    justify-content: center;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="logged-in" style="display: none;">
+                                <p class="user actions">
+                                <a href="#" id="logout-link">Sign Out</a>
+                                </p>
+                            </div>
+
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        // login-sim.js – handles mock login/logout and toggles body class
+(function() {
+  // Get references to the relevant elements
+  const loggedOutDiv = document.getElementById('logged-out');
+  const loggedInDiv = document.getElementById('logged-in');
+  const protectedArea = document.getElementById('protected-area');
+  const loginForm = document.querySelector('#new_user_session_small');
+  const logoutLink = document.getElementById('logout-link');
+  const usernameDisplay = document.getElementById('username-display');
+  const body = document.body;   // <-- we'll use this
+
+  // Initially hide protected area (if not already hidden)
+  if (protectedArea) protectedArea.style.display = 'none';
+
+  // Login form submission
+  if (loginForm) {
+    loginForm.addEventListener('submit', function(event) {
+      event.preventDefault();   // stop actual form submission
+
+      // Get entered username (for greeting)
+      const usernameInput = document.getElementById('user_session_mini_login');
+      const username = usernameInput ? usernameInput.value.trim() : 'User';
+
+      // Switch to logged-in state (UI)
+      if (loggedOutDiv) loggedOutDiv.style.display = 'none';
+      if (loggedInDiv) {
+        if (usernameDisplay) usernameDisplay.textContent = username || 'User';
+        loggedInDiv.style.display = 'block';
+      }
+      if (protectedArea) protectedArea.style.display = 'block';
+
+      // Close the login dropdown (remove 'open' class)
+      const loginContainer = document.getElementById('login');
+      if (loginContainer) loginContainer.classList.remove('open');
+
+      // --- CHANGE BODY CLASS TO logged-in ---
+      body.classList.remove('logged-out');
+      body.classList.add('logged-in');
+    });
+  }
+
+  // Logout link
+  if (logoutLink) {
+    logoutLink.addEventListener('click', function(event) {
+      event.preventDefault();
+
+      // Switch back to logged-out UI
+      if (loggedOutDiv) loggedOutDiv.style.display = 'block';
+      if (loggedInDiv) loggedInDiv.style.display = 'none';
+      if (protectedArea) protectedArea.style.display = 'none';
+
+      // --- CHANGE BODY CLASS BACK TO logged-out ---
+      body.classList.remove('logged-in');
+      body.classList.add('logged-out');
+    });
+  }
+})();

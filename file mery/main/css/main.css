@@ -1,0 +1,1012 @@
+/* Collection of mostly main functions
+PS. I'm losing my mind send help why did i even want to write all this shi
+
+PSS. Should i tag myself as author? IDK
+*/
+
+
+
+
+
+/*
+Importing the open sans here bc it doesn't come automatically
+*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+
+/*
+So this part right here is for opening fonts??? i mean, when the page loads, this part is what decides which font is on the page. Basically, at first its gonna look at whether it has the first font - Open Sans - then, if not, its gonna open the seocnd font - Lucida Grande- and so on. if none work, its gonna open a random font from sans-serif family.
+
+The first line just means which #tags im targeting.
+*/
+body, .toggled form, .dynamic form, .secondary, .dropdown {
+  background: #fff;
+  color: #2a2a2a;
+  font: 100%/1.125 'Open Sans', 'Lucida Grande', Verdana, Helvetica, 'GNU Unifont', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* 
+For headings just in case, this font loks good and very readable.
+
+Remember to change if it doesnt work out or is not needed.
+*/
+.heading {
+  font-family: Georgia, serif;
+}
+
+
+
+
+
+
+
+
+
+
+/*
+Codes for LINKS. I need some to have underlines, some to not, some to hover and for some to get darker after you visit it.
+
+Should i even add the last one????
+*/
+
+/* Normal links */
+a, a:link {
+  color: rgb(30, 54, 161);           /* Blue, I think i like this one.*/
+  text-decoration: none; /* No underline */
+}
+
+/* Hover state */
+a:hover {
+  text-decoration: underline;        /* Underline on hover */
+  color: rgb(13, 3, 80);                /* Slightly darker */
+}
+
+/* When clicking */
+a:active {
+  color: rgb(57, 10, 151);         /* purple-blue loool*/
+}
+
+/* Keyboard navigation */
+a:focus {
+  outline: 2px solid rgb(77, 54, 209); /* is liliac even comfortable to the eye???*/
+  outline-offset: 2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*
+For better look, i hate when these things stick together
+
+1 em is 16px 
+*/
+
+#header, #footer, #main, .container {
+  padding: 1em 3em;
+}
+
+/*
+for hiding things ig
+*/
+.hidden {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body, .toggled form, .dynamic form, .secondary, .dropdown {
+  background: #fff;
+  color: #2a2a2a;
+  font: 100%/1.125 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Helvetica, sans-serif, 'GNU Unifont';
+  margin: 0;
+  padding: 0;
+}
+
+.heading {
+  font-family: Georgia, serif;
+}
+
+a, a:link {
+  color: #1c1d6b;
+;
+  text-decoration: none;
+}
+
+#header, #footer, #main, #dashboard {
+  padding: 1em 3em;
+}
+
+.landmark {
+  font-size: 0;
+  opacity: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+li.blurb, fieldset, form dl {
+  border: 1px solid #ddd;
+  padding: 1em;
+  overflow: hidden;
+}
+
+.blurb li, .actions>*, .stats>*, .meta ul li {
+  list-style: none;
+  display: inline;
+  padding-left: 0.25em;
+}
+
+.actions form {
+  display: inline;
+}
+
+.actions input[type="submit"] {
+  margin: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+/* MEYERS RESET */
+
+
+
+
+
+
+
+
+
+/* MEYERS RESET END */
+
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+/* HEADER REGION START */
+
+#header input, #header #search>*, #header #search .submit {
+  display: inline;
+  float: none;
+}
+
+.header {
+  border-bottom: 10em solid #000000;
+}
+
+#header {
+  align-items: flex-start !important;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  min-height: 20px;          /* optional – remove if not needed */
+  padding: 0.5em 1em;
+  margin-top: 15px;
+}
+
+#header .landmark {
+  clear: none;
+  font-size: 0;
+  border: none;
+}
+
+#header a, #header fieldset, #header form, #header p, #header li, #header h1, #mini_login dl {
+  background: transparent;
+  font-size: 100%;
+  border: none;
+  padding: 0;
+  margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+#header {
+  font-size: 1em;
+  margin: 0 0 1em;
+  padding: 0;
+  position: relative;
+}
+
+#header li {
+  display: block;
+  float: left;
+  position: relative;
+}
+
+#header a, #header a:visited, #header .primary .open a, #header .primary .dropdown:hover a, #header .primary .dropdown a:focus {
+  color: #1c1d6b;
+}
+
+#header .actions a:hover, #header .actions a:focus, #header .dropdown:hover a, #header .open a {
+  background: #ddd;
+}
+
+/* TITLE/HEADING */
+
+#header .heading {
+  float: left;
+  padding: 1em;
+}
+
+/* 1.714em x 14px = 24px */
+#header .heading a {
+  color: rgb(53, 52, 105);
+  font-size: 1.714em;
+  line-height: 0.5em;
+}
+
+
+
+
+
+
+#header {
+  display: flex;
+  align-items: flex-end;    /* Aligns all children to the bottom */
+  justify-content: space-between; /* Pushes heading left, login right */
+  min-height: 50px;         /* Adjust as needed */
+  padding: 0.5em 1em;       /* Match original side padding */
+}
+
+#header .heading {
+  float: none;              /* Remove float */
+  padding: 0;               /* Adjust if needed */
+}
+
+#login {
+  float: none;              /* Remove float */
+  margin-right: 0;          /* Reset any old margin */
+}
+
+/* DROPDOWN */
+
+#header .menu, #mini_login {
+  background: #ddd;
+  display: none;
+  padding: 0.25em 0;
+  position: absolute;
+  width: 20em;
+  z-index: 55;
+    box-shadow: 1px 1px 3px -1px #444;
+    background-image: -moz-linear-gradient(top, rgba(221, 221, 221, 0.98) 0%, rgba(204, 204, 204, 0.98) 100%);
+    background-image: -webkit-linear-gradient(top, rgba(221, 221, 221, 0.98) 0%, rgba(204, 204, 204, 0.98) 100%);
+    background-image: -o-linear-gradient(top, rgba(221, 221, 221, 0.98) 0%, rgba(204, 204, 204, 0.98) 100%);
+    background-image: linear-gradient(to bottom, rgba(221, 221, 221, 0.98) 0%, rgba(204, 204, 204, 0.98) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fadddddd', endColorstr='#facccccc',GradientType=0);
+}
+
+#header .open .menu, .open + #mini_login, #header .menu li {
+  display: block;
+  float: none;
+}
+
+#header .menu li {
+  margin: 0 0.25em;
+  text-align: left;
+}
+
+#header .menu li:last-child {
+  border-bottom: none;
+}
+
+#header .dropdown .menu a {
+  background: transparent;
+  display: block;
+  padding: 0.75em 0.5em 0.5em;
+}
+
+#header .dropdown .menu a:hover, #header .dropdown .menu a:focus {
+  background: rgba(255, 255, 255, 0.703);
+}
+
+
+
+/*  LOGIN AND USER MENU */
+
+#login {
+  position: relative;   /* Makes this the reference point for absolute positioning */
+}
+
+#mini_login {
+  top: 100%;            /* Positions the dropdown directly below #login */
+  right: 0;             /* Aligns its right edge with #login’s right edge */
+  margin-top: 10px;      /* Optional: adds a small gap between button and dropdown */
+}
+
+#login, #user_menu {
+  float: right;
+  margin-right: 1em;
+}
+
+#header .user {
+  padding: 0.429em 0 0;
+  position: relative;
+  z-index: 20;
+}
+
+#header .user a, #mini_login .action {
+  padding: 0.25em 0.75em;
+}
+
+#header .user a:hover, #header .user a:focus {
+  color: #1c1d6b;
+    border-radius: 0.25em;
+}
+
+#login .open a:hover, #login .open a:focus {
+  background: #eee;
+}
+
+#user_menu .user > li {
+  margin: 0 0.125em;
+}
+
+#user_menu .menu {
+  right: 0;
+    box-shadow: -1px 1px 3px -1px #bfbdbd;
+}
+
+#user_session_mini_login, #user_session_mini_password {
+  width: 100%;
+  padding: 5px 5px;     /* Top/bottom 10px, left/right 8px */
+  font-size: 1.1em;
+  height: 30px;          /* Adjust as needed */
+  box-sizing: border-box; /* Ensures padding doesn't increase total width */
+}
+
+
+/* square off bottom corners when the dropdown is visible */
+#user_menu .open a, #user_menu .dropdown:hover a {
+    border-radius: 0.25em 0.25em 0 0;
+}
+
+#user_menu .dropdown .menu a {
+    border-radius: 0;
+}
+
+#user_menu p.icon {
+  float: right;
+  height: auto;
+  padding: 0.429em 0.125em 0;
+  line-height: 1;
+  width: auto;
+}
+
+#user_menu p.icon a {
+  display: block;
+  padding: 0;
+}
+
+#user_menu img.icon {
+  height: 1.786em;
+  width: 1.786em;
+  background-size: 100%;
+}
+
+/* LOGIN FORM */
+
+/* Show login form when #login has class "open" */
+#login.open #mini_login {
+  display: block !important;  /* !important temporarily to override hover; remove it later if unnecesary */
+}
+
+#mini_login {
+  border: 3.5px solid rgb(140, 169, 196);
+  padding: 0.375em;
+  right: 0em;
+  z-index: 10;
+    box-shadow: none;
+}
+
+#mini_login form {
+  margin-top: 1em;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+#mini_login dt, #mini_login dd {
+  margin: 0;
+  width: 99%;
+}
+
+#mini_login dt, #mini_login .submit {
+  border-bottom: none;
+  padding: 0.375em 0 0;
+  margin-bottom: 0.5em;
+}
+
+#mini_login .actions {
+  float: none;
+  text-align: left;
+}
+
+#mini_login .footnote {
+  float: left;
+  font-size: 0.857em;
+  padding: 0.375em 0;
+}
+
+#mini_login .footnote li {
+  padding: 0 0.25em;
+}
+
+.dropdown #mini_login .footnote a {
+  background: transparent;
+}
+
+
+
+
+
+/* rewiew this at later date */
+
+.footnote.actions {
+  display: flex;           /* Puts items in a row */
+  justify-content: center; /* Centers them horizontally */
+  gap: 15px;               /* Space between the two links */
+  list-style: none;        /* Removes bullet points */
+  padding: 0;
+  margin: 10px 0 0;
+  margin-left: 9px;
+}
+
+.footnote.actions li {
+  display: inline;         /* Ensures they stay inline */
+  margin: 0 10px;            /* Adds space left/right of each list item */
+}
+
+.footnote.actions a {
+  color: #000 !important;  /* Forces black color */
+  font-size: 0.85em;       /* Makes text smaller */
+  text-decoration: none;   /* Removes underline */
+}
+
+/* Optional: add hover effect */
+.footnote.actions a:hover {
+  text-decoration: none;
+  color: #333;             /* Slightly lighter black on hover */
+  text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+#logged-in .user a {
+  background: transparent;
+  padding: 0.25em 0.75em;
+  color: #1c1d6b;
+  border-radius: 0.25em;
+}
+
+#logged-in .user a:hover {
+  background: #ddd;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* === SEARCH BAR (cleaned) === */
+#header .search {
+  float: none;                  /* remove old float */
+  margin-right: 5em;             /* space between search and login */
+  display: flex;
+  color: #2a2a2a;
+}
+
+#header #search form {
+  display: flex;
+  margin: 0;
+  align-content: flex-end;
+}
+
+#header #search .text {
+  margin: 0;                     /* override old margin */
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: px 0 0 3px;
+  height: auto;
+  font-size: 1.2em;
+  width: 450px;                  /* adjust as needed */
+}
+
+#header #search .button {
+  margin: 0;
+  padding: 4px 2px;
+  background-color: rgb(140, 169, 196);
+  color: white;
+  border: 1px solid rgb(140, 169, 196);
+  border-radius: 0 3px 3px 0;
+  cursor: pointer;
+  font-size: 1.2em;
+  white-space: nowrap;
+}
+
+#header #search .button:hover {
+  background-color: rgb(78, 145, 208);
+}
+
+#header #search input:focus {
+  color: #2a2a2a;
+  outline: 1px dotted;
+}
+
+/* === HEADER LAYOUT (keep your flex settings) === */
+#header {
+  display: flex;
+  align-items: flex-end;
+  padding: 0.5em 1em;
+}
+
+#header .heading {
+  margin-right: auto;
+}
+
+
+
+
+
+
+
+/* === HEADERBOARD === */
+.headerboard {
+  width: 100%;
+  background-color: rgba(140, 169, 196, 0.79);
+  padding: 0.5em 1em;
+  box-sizing: border-box;
+}
+
+.headerboard nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.headerboard .left-nav,
+.headerboard .right-nav {
+  display: flex;
+  gap: 1.5em;                     /* adjust space between links */
+  flex-wrap: wrap;                 /* allows wrapping on narrow screens */
+  list-style: none;                /* remove bullet points */
+  margin: 0;
+  padding: 0;
+}
+
+.headerboard nav a {
+  color: #1c1d6b;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 1.1em;
+  padding: 0.2em 0.5em;
+}
+
+.headerboard nav a:hover {
+  text-decoration: underline;
+  background-color: transparent;
+}
+
+/* Optional: prevent wrapping entirely */
+@media (min-width: 601px) {
+  .headerboard .left-nav,
+  .headerboard .right-nav {
+    flex-wrap: nowrap;
+  }
+}
+
+/* Responsive stacking for very small screens */
+@media (max-width: 600px) {
+  .headerboard nav {
+    flex-direction: column;
+    gap: 0.5em;
+  }
+  .headerboard .left-nav,
+  .headerboard .right-nav {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* === SUBMIT BUTTON (keep as is) === */
+.submit input[type="submit"] {
+  font-size: 1em;
+  padding: 2px 5px;
+  margin: 15px 0 10px;
+}
+
+
+/* When logged out, hide the right navigation group (Post, Inbox, Chats) */
+.logged-out .headerboard .right-nav {
+  display: none;
+}
+
+/* When logged in, ensure the right group is visible */
+.logged-in .headerboard .right-nav {
+  display: flex;   /* or whatever display value it normally has */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* === SEARCH PAGE === */
+
+
+
+/* Document‑style search page with left tabs – refined */
+        .search-page {
+            max-width: 1500px;                      /* increased from 1000px */
+            margin: 2em auto;
+            padding: 0 1em;
+            font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Helvetica, sans-serif;
+            font-size: 1.1em;                       /* makes all text 10% larger */
+        }
+
+        /* Two‑column layout: buttons on left, panel on right */
+        .search-container {
+            display: flex;
+            gap: 0;
+            align-items: stretch;
+        }
+
+        /* Sidebar: no background, just vertical button list */
+        .search-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;              /* small space between buttons */
+            padding: 0;
+            margin: 0;
+            width: 200px;
+            flex-shrink: 0;
+        }
+
+        /* Individual buttons – rounded on the left side */
+        .side-button {
+            background: #f8f8f8;
+            border: 1px solid #ccc;
+            border-right: none;      /* remove right border so it touches panel */
+            border-radius: 8px 0 0 8px;  /* rounded left corners */
+            padding: 1em 1.2em;
+            text-align: left;
+            font-size: 1em;           /* relative to .search-page's 1.1em */
+            font-family: inherit;
+            cursor: pointer;
+            transition: background 0.1s;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            width: 100%;
+        }
+
+        /* Active button – white background, left accent, blends with panel */
+        .side-button.active {
+            background: #fff;
+            border-left: 4px solid #1c1d6b;   /* dark blue accent */
+            font-weight: bold;
+            border-right: 1px solid #fff;      /* blends with panel background */
+            margin-right: -1px;                 /* pull right to overlay panel border */
+            z-index: 1;                          /* stay above panel border */
+            position: relative;
+        }
+
+        .side-button:hover {
+            background: #e8e8e8;
+        }
+
+        /* Right panel – retains outer border */
+        .search-panels {
+            flex: 1;
+            border: 1px solid #ccc;
+            background: #fff;
+            padding: 1.5em;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+            border-radius: 0 8px 8px 8px;       /* rounded only on right & bottom */
+        }
+
+        .search-panel {
+            display: none;
+        }
+
+        .search-panel.active {
+            display: block;
+        }
+
+        /* Simple form styling (same as before) */
+        .search-panel h2 {
+            margin-top: 0;
+            font-size: 1.3em;
+            border-bottom: 1px dotted #aaa;
+            padding-bottom: 0.3em;
+        }
+
+        .search-panel label {
+            display: block;
+            margin: 0.8em 0 0.2em;
+            font-weight: 600;
+        }
+
+        .search-panel input[type="text"],
+        .search-panel select,
+        .search-panel input[type="date"] {
+            width: 100%;
+            padding: 0.5em;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+            font-family: inherit;
+            background: #fefefe;
+        }
+
+        .search-panel button[type="submit"] {
+            margin-top: 1.2em;
+            padding: 0.6em 1.5em;
+            background: rgb(140, 169, 196);
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1em;
+        }
+
+        .search-panel button[type="submit"]:hover {
+            background: rgb(78, 145, 208);
+        }
+
+    #header {
+        align-items: flex-start !important;
+        }
+
+        #header {
+        display: flex;
+        justify-content: space-between;
+        min-height: 20px;          /* optional – remove if not needed */
+        padding: 0.5em 1em;
+        margin-top: 15px;
+        }
+
+      .search-panel.active {
+      max-height: 70vh;
+      overflow-y: auto;
+      padding-right: 1.5em; /* avoid scrollbar overlap */
+    }
+
+
+
+
+
+
+
+
+
+
+    /* Form spacing inside search panel */
+.search-panel .form-group {
+  margin-bottom: 1.2em;
+}
+
+.search-panel fieldset.form-group {
+  border: 1px solid #ddd;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+}
+
+.search-panel label {
+  display: inline-block;        /* so checkbox/radio labels sit beside inputs */
+  margin-right: 1.5em;
+  white-space: nowrap;
+}
+
+.search-panel input[type="text"],
+.search-panel select {
+  width: 100%;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 0.95em;             /* slightly smaller than base */
+}
+
+.search-panel .hint {
+  display: block;
+  font-size: 0.85em;
+  color: #666;
+  margin-top: 0.3em;
+}
+
+.search-panel button[type="submit"] {
+  margin-top: 1em;
+  padding: 0.6em 2em;
+  background: rgb(140, 169, 196);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+
+
+.search-page {
+  font-size: 1em;  /* or 0.95em if you prefer */
+}
+
+
+/* Remove bold from legends */
+.search-panel legend {
+  font-weight: normal;        /* was bold */
+  padding: 0 0.3em;
+  font-size: 1em;
+}
+
+/* Ensure labels are normal weight (they likely already are, but to be safe) */
+.search-panel label {
+  font-weight: normal;
+  display: inline-block;
+  margin-right: 1.5em;
+  white-space: nowrap;
+}
+
+/* HEADER REGION END */
+
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+/* MAIN REGION START */
+
+
+
+/* MAIN REGION END */
+
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+/* FOOTER REGION START */
+
+/* Make the body a flex column to push footer down */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+#outer {
+  flex: 1 0 auto;   /* Takes up all available space */
+  width: 100%;
+}
+
+.footer {
+  flex-shrink: 0;               /* Prevents footer from shrinking */
+  background-color: rgb(140, 169, 196);
+  color: white;
+  text-align: center;
+  width: 100%;
+  /* Remove fixed positioning */
+  position: static;
+  left: auto;
+  bottom: auto;
+  padding: 1em 0;               /* optional – gives footer some height */
+}
+
+/* FOOTER REGION END */
+
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+
+
